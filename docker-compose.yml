@@ -1,0 +1,11 @@
+# For more information: https://laravel.com/docs/sail
+version: '3'
+services:
+    db:
+        image: postgres:12.4
+        ports:
+            - "5432:5432"
+        env_file:
+            - .env
+        volumes:
+            - ./init.sql:/docker-entrypoint-initdb.d/init.sql
