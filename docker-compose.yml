@@ -3,9 +3,9 @@ version: '3'
 services:
     db:
         image: postgres:12.4
+        environment:
+            - POSTGRES_PASSWORD=db
+            - POSTGRES_USER=db
+            - POSTGRES_DB=db
         ports:
-            - "5432:5432"
-        env_file:
-            - .env
-        volumes:
-            - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+            - ${POSTGRES_ADDRESS:-127.0.0.1:5432}:5432
